@@ -5,7 +5,7 @@
   "authors": [
     "Sam Bellen <sambellen@gmail.com>"
   ],
-  "description": "A small javascript plugin to create an oscilloscope of an audio-context",
+  "description": "A small javascript plugin to create an oscilloscope of an audio-context.",
   "moduleType": [],
   "keywords": [
     "webaudio",
@@ -23,14 +23,15 @@
     "test",
     "tests"
   ],
-  "_release": "19d5d597f2",
+  "version": "0.1.1",
+  "_release": "0.1.1",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "19d5d597f2a51441ef234afb0f67ae919ffbbb23"
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "0fe3c795f57a62262f74b8ead52ac44d17776cdf"
   },
   "_source": "git://github.com/Sambego/oscilloscope.js.git",
-  "_target": "*",
+  "_target": "~0.1.1",
   "_originalSource": "oscilloscope.js",
   "_direct": true
 }

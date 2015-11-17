@@ -1,5 +1,9 @@
 'use strict';
 /**
+ * Author: Sam Bellen
+ * Github: https://github.com/Sambego/oscilloscope.js
+ * Version: 0.1
+ *
  * Visualise an audio-stream with an oscilloscope
  * @param  {string} target  The target container, in this container the oscilloscope will be created.
  * @param  {context} context An audio context containing the audio-stream
