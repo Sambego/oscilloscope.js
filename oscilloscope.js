@@ -79,7 +79,7 @@ Oscilloscope.prototype.stop = function() {
 
 /**
  * Connect the analyser-node to another audio-node
- * @param  {audioNode} node An audio-node to connct to
+ * @param  {audioNode} node An audio-node to connect to
  */
 Oscilloscope.prototype.connect = function(node) {
     this.analyserNode.connect(node);
@@ -87,7 +87,6 @@ Oscilloscope.prototype.connect = function(node) {
 
 /**
  * Connect the analyser-node to the audio-context' destination
- * @return {[type]} [description]
  */
 Oscilloscope.prototype.toggleAudio = function() {
     if (!!this.hasAudio) {
