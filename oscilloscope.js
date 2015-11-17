@@ -6,7 +6,7 @@
  * @return {Oscilliscope} The Oscilloscope object
  */
 var Oscilloscope = Oscilloscope || function(target, context) {
-    var _drawWave;
+    var _drawWave, _bufferLength, _dataArray;
 
     this.target = document.querySelector(target);
 
@@ -40,8 +40,8 @@ var Oscilloscope = Oscilloscope || function(target, context) {
     // Set-up the analyser-node which we're going to use to get the oscillation wave
     this.analyserNode = this.audioContext.createAnalyser();
     this.analyserNode.fftSize = 128;
-    this.bufferLength = this.analyserNode.frequencyBinCount;
-    this.dataArray = new Uint8Array(this.bufferLength);
+    _bufferLength = this.analyserNode.frequencyBinCount;
+    _dataArray = new Uint8Array(_bufferLength);
 
     /**
      * Draw the oscillation wave
@@ -49,10 +49,10 @@ var Oscilloscope = Oscilloscope || function(target, context) {
     _drawWave = function() {
         var path = 'M';
 
-        this.analyserNode.getByteTimeDomainData(this.dataArray);
+        this.analyserNode.getByteTimeDomainData(_dataArray);
 
-        this.dataArray.forEach(function(point, i) {
-            path += (((this.width + (this.width / this.bufferLength))/ this.bufferLength) * i) + ' ' + ((this.height / 2) * (point / 128.0)) + ', ';
+        _dataArray.forEach(function(point, i) {
+            path += (((this.width + (this.width / _bufferLength))/ _bufferLength) * i) + ' ' + ((this.height / 2) * (point / 128.0)) + ', ';
         }.bind(this));
 
         this.wave.setAttribute('d', path);
