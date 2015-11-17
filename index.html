@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Oscilloscope.js by Sambego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Oscilloscope.js</h1>
+      <h2 class="project-tagline">A small javascript plugin to create an oscilloscope of an audio-context</h2>
+      <a href="https://github.com/Sambego/oscilloscope.js" class="btn">View on GitHub</a>
+      <a href="https://github.com/Sambego/oscilloscope.js/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Sambego/oscilloscope.js/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="oscilloscopejs" class="anchor" href="#oscilloscopejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>oscilloscope.js</h1>
+
+<p>A small javascript plugin to create an oscilloscope of an audio-context.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>bower install oscilloscope.js
+</code></pre>
+
+<h2>
+<a id="basic-setup" class="anchor" href="#basic-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic setup</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Create an audio-context</span>
+<span class="pl-k">var</span> audioContext <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">window.AudioContext</span>(),
+    oscillator <span class="pl-k">=</span> audioContext.createOscillator();
+    oscillator.<span class="pl-c1">type</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>sine<span class="pl-pds">'</span></span>;
+    oscillator.frequency.<span class="pl-c1">value</span> <span class="pl-k">=</span> <span class="pl-c1">400</span>;
+
+<span class="pl-c">// Create an Oscilloscope instance</span>
+<span class="pl-c">//   Parameters:</span>
+<span class="pl-c">//     - The container in which the oschilloscope gets created</span>
+<span class="pl-c">//     - an optional audio-context on which the oscilloscope creates an analyser-node,</span>
+<span class="pl-c">//          and can connect to the destination.</span>
+<span class="pl-c">//          If no audio-context is specified, a new one will be created created.</span>
+<span class="pl-k">var</span> oscilloscope <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Oscilloscope</span>(<span class="pl-s"><span class="pl-pds">'</span>.js-oscilloscope<span class="pl-pds">'</span></span>, audioContext);
+
+<span class="pl-c">// Connect the oscillator-node to the oscilloscope</span>
+oscillator.connect(oscilloscope.analyserNode);
+
+<span class="pl-c">// Start the oscilloscope</span>
+oscilloscope.<span class="pl-c1">start</span>();</pre></div>
+
+<h2>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a id="properties" class="anchor" href="#properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Properties</h3>
+
+<div class="highlight highlight-source-js"><pre>Oscilloscope.<span class="pl-c1">target</span> <span class="pl-c">// Container</span>
+
+Oscilloscope.<span class="pl-c1">width</span> <span class="pl-c">// The oscilloscope' width</span>
+
+Oscilloscope.<span class="pl-c1">height</span> <span class="pl-c">// The oscilloscope' height</span>
+
+Oscilloscope.svg <span class="pl-c">// The svg-element in which we draw the oscilloscope</span>
+
+Oscilloscope.wave <span class="pl-c">// The path svg-element which represents the audio wave</span>
+
+Oscilloscope.audioContext <span class="pl-c">// The oscilloscope' audio-context</span>
+
+Oscilloscope.running <span class="pl-c">// Indicates if the oscilloscope is running</span>
+
+Oscilloscope.hasAudio <span class="pl-c">// Indicates if the oscilloscope is connected to the audio-context' destination</span></pre></div>
+
+<h3>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">/**</span>
+<span class="pl-c"> * Start the oscilloscope</span>
+<span class="pl-c"> */</span>
+Oscilloscope.<span class="pl-c1">start</span>();
+
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Stop the oscilloscope</span>
+<span class="pl-c"> */</span>
+Oscilloscope.<span class="pl-c1">stop</span>();
+
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Connect the analyser-node to another audio-node</span>
+<span class="pl-c"> * <span class="pl-k">@param</span>  {audioNode} node An audio-node to connect to</span>
+<span class="pl-c"> */</span>
+Oscilloscope.connect(audioNode);
+
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Connect the analyser-node to the audio-context' destination</span>
+<span class="pl-c"> */</span>
+Oscilloscope.toggleAudio();</pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Oscilloscope.js is licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Sambego/oscilloscope.js">Oscilloscope.js</a> is maintained by <a href="https://github.com/Sambego">Sambego</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
