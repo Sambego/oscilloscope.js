@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/oscilloscope.css" media="screen">
   </head>
   <body>
     <section class="page-header">
@@ -26,6 +27,33 @@
 
 <h2>
 <a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<div class="js-oscilloscope oscilloscope"></div>
+<script>
+  window.onload = function() {
+    // Create an audio-context
+    var audioContext = new window.AudioContext(),
+        oscillator = audioContext.createOscillator();
+        oscillator.type = 'sine';
+        oscillator.frequency.value = 400;
+        oscillator.start();
+
+    // Create an Oscilloscope instance
+    //   Parameters:
+    //     - The container in which the oschilloscope gets created
+    //     - an optional audio-context on which the oscilloscope creates an analyser-node,
+    //          and can connect to the destination.
+    //          If no audio-context is specified, a new one will be created created.
+    var oscilloscope = new Oscilloscope('.js-oscilloscope', audioContext);
+
+    // Connect the oscillator-node to the oscilloscope
+    oscillator.connect(oscilloscope.analyserNode);
+
+    // Start the oscilloscope
+    oscilloscope.start();
+  };
+</script>
+
 
 <h2>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
@@ -115,6 +143,6 @@ Oscilloscope.toggleAudio();</pre></div>
 
     </section>
 
-  
+    <script src="bower_components/oscilloscope.js/oscilloscope.js"></script>
   </body>
 </html>
