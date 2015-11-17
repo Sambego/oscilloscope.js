@@ -50,7 +50,7 @@ var Oscilloscope = Oscilloscope || function(target, context) {
         this.analyserNode.getByteTimeDomainData(this.dataArray);
 
         this.dataArray.forEach(function(point, i) {
-            path +=  (((this.width + (this.width / this.bufferLength))/ this.bufferLength) * i) + ' ' + ((this.height / 2) * (point / 128.0)) + ', ';
+            path += (((this.width + (this.width / this.bufferLength))/ this.bufferLength) * i) + ' ' + ((this.height / 2) * (point / 128.0)) + ', ';
         }.bind(this));
 
         this.wave.setAttribute('d', path);
@@ -68,7 +68,7 @@ Oscilloscope.prototype.start = function() {
     this.running = true;
 
     window.requestAnimationFrame(this.drawWave);
-}
+};
 
 /**
  * Stop the oscilloscope
