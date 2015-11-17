@@ -6,6 +6,8 @@
  * @return {Oscilliscope} The Oscilloscope object
  */
 var Oscilloscope = Oscilloscope || function(target, context) {
+    var _drawWave;
+
     this.target = document.querySelector(target);
 
     // Set the dimensions based on the target container
@@ -44,7 +46,7 @@ var Oscilloscope = Oscilloscope || function(target, context) {
     /**
      * Draw the oscillation wave
      */
-    this.drawWave = function() {
+    _drawWave = function() {
         var path = 'M';
 
         this.analyserNode.getByteTimeDomainData(this.dataArray);
@@ -56,18 +58,18 @@ var Oscilloscope = Oscilloscope || function(target, context) {
         this.wave.setAttribute('d', path);
 
         if (this.running) {
-            window.requestAnimationFrame(this.drawWave);
+            window.requestAnimationFrame(_drawWave);
         }
     }.bind(this);
-};
 
-/**
- * Start the oscilloscope
- */
-Oscilloscope.prototype.start = function() {
-    this.running = true;
+    /**
+     * Start the oscilloscope
+     */
+    this.start = function() {
+        this.running = true;
 
-    window.requestAnimationFrame(this.drawWave);
+        window.requestAnimationFrame(_drawWave);
+    }.bind(this);
 };
 
 /**
