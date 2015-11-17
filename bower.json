@@ -5,7 +5,7 @@
   "authors": [
     "Sam Bellen <sambellen@gmail.com>"
   ],
-  "description": "A small javascript plugin to create an oscilloscope of an audio-context",
+  "description": "A small javascript plugin to create an oscilloscope of an audio-context.",
   "moduleType": [],
   "keywords": [
     "webaudio",
