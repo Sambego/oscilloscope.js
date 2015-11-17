@@ -1,5 +1,5 @@
 # oscilloscope.js
-A small javascript plugin to create an oscilloscope of an audio-context
+A small javascript plugin to create an oscilloscope of an audio-context.
 
 ## install
 ```
@@ -17,9 +17,9 @@ var audioContext = new window.AudioContext(),
 // Create an Oscilloscope instance
 //   Parameters:
 //     - The container in which the oschilloscope gets created
-//     - an optional audio context on which the oscilloscope creates an analyser-node,
+//     - an optional audio-context on which the oscilloscope creates an analyser-node,
 //          and can connect to the destination.
-//          If no audioContext is specified, a new one will be created created.
+//          If no audio-context is specified, a new one will be created created.
 var oscilloscope = new Oscilloscope('.js-oscilloscope', audioContext);
 
 // Connect the oscillator-node to the oscilloscope
@@ -30,11 +30,10 @@ oscilloscope.start();
 ```
 ## API
 ### Properties
-
 ```javascript
 Oscilloscope.target // Container
 
-Oscilloscope.width // The oscilloscope' width 
+Oscilloscope.width // The oscilloscope' width
 
 Oscilloscope.height // The oscilloscope' height
 
