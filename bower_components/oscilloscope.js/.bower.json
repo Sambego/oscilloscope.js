@@ -23,11 +23,11 @@
     "test",
     "tests"
   ],
-  "_release": "a534e076eb",
+  "_release": "19d5d597f2",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "a534e076eb8d83b4c375959ba70ed293e841022f"
+    "commit": "19d5d597f2a51441ef234afb0f67ae919ffbbb23"
   },
   "_source": "git://github.com/Sambego/oscilloscope.js.git",
   "_target": "*",

@@ -13,6 +13,7 @@ var audioContext = new window.AudioContext(),
     oscillator = audioContext.createOscillator();
     oscillator.type = 'sine';
     oscillator.frequency.value = 400;
+    oscillator.start();
 
 // Create an Oscilloscope instance
 //   Parameters:
