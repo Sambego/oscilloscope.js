@@ -1,5 +1,5 @@
 # oscilloscope.js
-A small javascript plugin to create an oscilloscope of an audio-context.
+A small javascript plugin to create an oscilloscope of an audio-context. You can see an example [here](http://sambego.github.io/oscilloscope.js)
 
 ## Install
 ```
