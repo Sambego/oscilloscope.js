@@ -101,5 +101,5 @@ Oscilloscope.prototype.toggleAudio = function() {
         this.analyserNode.connect(this.audioContext.destination);
     }
 
-    this.hasAudio != this.hasAudio;
+    this.hasAudio = !this.hasAudio;
 };
